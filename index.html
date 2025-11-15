@@ -1,63 +1,80 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beast85 Fit</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beast85</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #f1f1f1;
-            font-family: Arial, sans-serif;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #ff7b00, #00c853);
-            padding: 20px;
-            color: white;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .card {
-            background: white;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 14px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-        }
-
-        .title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .value {
-            font-size: 28px;
-            margin-top: 5px;
-            color: #00a84f;
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.png">
 </head>
-<link rel="apple-touch-icon" href="icon.png">
-<link rel="manifest" href="manifest.json">  
-<body>
-    <div class="header">🔥 Beast85 Fit Dashboard</div>
 
-    <div class="card">
-        <div class="title">📊 Bugünkü Kalori</div>
-        <div class="value" id="cal">0 kcal</div>
+<body><div class="container">
+<button id="darkModeBtn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+    <h1>Beast85 Günlük Takip</h1>
+
+    <label>Bugünkü Kalori:</label>
+    <input type="number" id="calories" placeholder="Örn: 2200">
+
+    <label>Bugünkü Su (Litres):</label>
+    <input type="number" id="water" placeholder="Örn: 2.5">
+
+    <label>Bugünkü Antrenman:</label>
+    <textarea id="workout" placeholder="Örn: Göğüs + Arka kol"></textarea>
+
+    <button onclick="saveData()">Kaydet</button>
+    <h2 id="today-date"></h2>
+
+    <h2>Son Kayıt</h2>
+<div class="last-box">
+    <p id="last-calories">Kalori: -</p>
+    <p id="last-water">Su: -</p>
+    <p id="last-workout">Antrenman: -</p>
+</div>
+
+
+</div>
+
+
+  <h1 class="title">Beast85 Fit</h1>
+  <p class="motto" id="motivation"></p>
+<div class="card">
+    <h2>Kilo Takibi</h2>
+    <input id="weight" type="number" placeholder="Kilonu gir (kg)">
+<button onclick="saveData()">Kaydet</button>
+<p id="last-weight">Son Kilo: -</p>
+
+
+    <div class="last-box">
+        <p id="last-weight">Son Kilo: -</p>
     </div>
+</div>
 
-    <div class="card">
-        <div class="title">💧 İçilen Su</div>
-        <div class="value" id="water">0 ml</div>
+  <div class="card">
+    <h2>Kalori Takibi</h2>
+    <input id="calorieInput" type="number" placeholder="Bugün aldığın kalori">
+    <button onclick="saveCalorie()">Kaydet</button>
+    <p id="calorieResult"></p>
+  </div>
+
+  <div class="card">
+    <h2>Antrenman Seç</h2>
+    <div class="workout-buttons">
+      <button onclick="setWorkout('Push')">Push</button>
+      <button onclick="setWorkout('Pull')">Pull</button>
+      <button onclick="setWorkout('Legs')">Legs</button>
+      <button onclick="setWorkout('Cardio')">Cardio</button>
     </div>
+    <p id="workoutResult"></p>
+  </div>
 
-    <div class="card">
-        <div class="title">🏋️ Antrenman (dakika)</div>
-        <div class="value" id="workout">0 dk</div
+  <div class="card">
+    <h2>Günlük Not</h2>
+    <textarea id="noteInput" placeholder="Bugün nasıldı?"></textarea>
+    <button onclick="saveNote()">Kaydet</button>
+    <p id="noteResult"></p>
+  </div>
+
+  <script src="app.js"></script>
